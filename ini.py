@@ -12,8 +12,9 @@ def hammingDistance(s1, s2):
 
 d = {}
 felim = defaultdict(list)
-files = [f for f in os.listdir("aich/")]
-files = ["aich/" + f for f in files]
+#The directory which contains the images
+files = [f for f in os.listdir("dir1/")]
+files = ["dir1/" + f for f in files]
 
 for f in files:
 
@@ -64,4 +65,5 @@ for f in sorted(d):
 		if flag == 0:
 			break
 	if flag == 1:
-		shutil.copyfile(f,"aich/temp/"+fn)
+		#the target directory
+		shutil.copyfile(f,"dir1/uniques/"+fn)
