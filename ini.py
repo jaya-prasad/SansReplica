@@ -66,4 +66,6 @@ for f in sorted(d):
 			break
 	if flag == 1:
 		#the target directory
-		shutil.copyfile(f,"dir1/uniques/"+fn)
+		if not os.path.exists("uniques"):
+			os.makedirs("uniques")
+		shutil.copyfile(f,"uniques/"+fn)
