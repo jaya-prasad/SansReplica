@@ -11,6 +11,10 @@ def hammingDistance(s1, s2):
         raise ValueError("Undefined for sequences of unequal length")
     return sum(bool(ord(ch1) - ord(ch2)) for ch1, ch2 in zip(s1, s2))
 
+if len(sys.argv)!=3:
+	print "Error !!! Correct usage : python simi.py <Directory for images> <Directory for uniques>"
+	exit()
+
 d = {}
 felim = defaultdict(list)
 files = [f for f in os.listdir(sys.argv[1])]
@@ -63,7 +67,6 @@ for f in sorted(d):
 		if flag == 0:
 			break
 	if flag == 1:
-		#the target directory
 		if not os.path.exists(sys.argv[2]):
 			os.makedirs(sys.argv[2])
 		shutil.copyfile(f,sys.argv[2]+fn)
