@@ -2,6 +2,7 @@ from PIL import Image
 import os
 import shutil
 from collections import defaultdict
+import sys
 
 def hammingDistance(s1, s2):
     """Return the Hamming distance between equal-length sequences"""
@@ -12,9 +13,8 @@ def hammingDistance(s1, s2):
 
 d = {}
 felim = defaultdict(list)
-#The directory which contains the images
-files = [f for f in os.listdir("dir1/")]
-files = ["dir1/" + f for f in files]
+files = [f for f in os.listdir(sys.argv[1])]
+files = [sys.argv[1] + f for f in files]
 
 for f in files:
 
@@ -31,8 +31,6 @@ for f in files:
 	pixels = list(img.getdata())
 	avg = sum(pixels) / len(pixels)
 
-	#print f,avg
-	
 	bits = "".join(map(lambda pixel: '1' if pixel < avg else '0', pixels));
 	hexadecimal = int(bits, 2).__format__('016x').upper()
 
@@ -66,6 +64,6 @@ for f in sorted(d):
 			break
 	if flag == 1:
 		#the target directory
-		if not os.path.exists("uniques"):
-			os.makedirs("uniques")
-		shutil.copyfile(f,"uniques/"+fn)
+		if not os.path.exists(sys.argv[2]):
+			os.makedirs(sys.argv[2])
+		shutil.copyfile(f,sys.argv[2]+fn)
