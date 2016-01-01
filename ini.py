@@ -12,7 +12,7 @@ def hammingDistance(s1, s2):
     return sum(bool(ord(ch1) - ord(ch2)) for ch1, ch2 in zip(s1, s2))
 
 if len(sys.argv)!=3:
-	print "Error !!! Correct usage : python simi.py <Directory for images> <Directory for uniques>"
+	print "Error !!! Correct usage : python ini.py <Directory for images> <Directory for uniques>"
 	exit()
 
 d = {}
@@ -21,15 +21,12 @@ files = [f for f in os.listdir(sys.argv[1])]
 files = [sys.argv[1] + f for f in files]
 
 for f in files:
-
 	x = f
-
 	if x.lower().endswith(('.png', '.jpg', '.jpeg')) == 0:
 		continue
 
 	img = Image.open(f)
 	img = img.resize((8, 8), Image.ANTIALIAS)
-
 	img = img.convert("L")
 
 	pixels = list(img.getdata())
