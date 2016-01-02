@@ -14,8 +14,8 @@ if len(sys.argv)!=3:
 	print "Error !!! Correct usage : python ini.py <Directory for images> <Directory for uniques>"
 	exit()
 
-d = {}
-felim = defaultdict(list)
+hash_value = {}
+similar_file_list = defaultdict(list)
 files = [f for f in os.listdir(sys.argv[1])]
 files = [sys.argv[1] + f for f in files]
 
@@ -35,28 +35,28 @@ for f in files:
 	hexadecimal = int(bits, 2).__format__('016x').upper()
 
 	print f," ",hexadecimal
-	d[f] = hexadecimal
+	hash_value[f] = hexadecimal
 
 dr = 0
 
-for f in sorted(d):
-	for x in sorted(d):
-		if(hammingDistance(d[f],d[x])<2 and f!=x):
+for f in sorted(hash_value):
+	for x in sorted(hash_value):
+		if(hammingDistance(hash_value[f],hash_value[x])<2 and f!=x):
 			if f < x:
-				felim[f].append(x)
+				similar_file_list[f].append(x)
 			else:
-				felim[x].append(f)
-			print f," --> ",x," <",hammingDistance(d[f],d[x]),">"
+				similar_file_list[x].append(f)
+			print f," --> ",x," <",hammingDistance(hash_value[f],hash_value[x]),">"
 
-for f in felim:
+for f in similar_file_list:
 	print f
 
-for f in sorted(d):
+for f in sorted(hash_value):
 	flag = 1
 	fn = f.rsplit("/")
 	fn = fn[len(fn)-1]
-	for x in felim:
-		for y in felim[x]:
+	for x in similar_file_list:
+		for y in similar_file_list[x]:
 			if f == y:
 				flag = 0
 				break
