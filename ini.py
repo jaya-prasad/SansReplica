@@ -10,6 +10,20 @@ def hammingDistance(s1, s2):
     	return 100
     return sum(bool(ord(ch1) - ord(ch2)) for ch1, ch2 in zip(s1, s2))
 
+def get_hash(f):
+	img = Image.open(f)
+	img = img.resize((8, 8), Image.ANTIALIAS)
+	img = img.convert("L")
+
+	pixels = list(img.getdata())
+	avg = sum(pixels) / len(pixels)
+
+	bits = "".join(map(lambda pixel: '1' if pixel < avg else '0', pixels));
+	hexadecimal = int(bits, 2).__format__('016x').upper()
+
+	return hexadecimal
+
+
 if len(sys.argv)!=3:
 	print "Error !!! Correct usage : python ini.py <Directory for images> <Directory for uniques>"
 	exit()
@@ -23,19 +37,8 @@ for f in files:
 	x = f
 	if x.lower().endswith(('.png', '.jpg', '.jpeg')) == 0:
 		continue
-
-	img = Image.open(f)
-	img = img.resize((8, 8), Image.ANTIALIAS)
-	img = img.convert("L")
-
-	pixels = list(img.getdata())
-	avg = sum(pixels) / len(pixels)
-
-	bits = "".join(map(lambda pixel: '1' if pixel < avg else '0', pixels));
-	hexadecimal = int(bits, 2).__format__('016x').upper()
-
-	print f," ",hexadecimal
-	hash_value[f] = hexadecimal
+	hash_value[f] = get_hash(f)
+	print f," ",hash_value[f]
 
 dr = 0
 
