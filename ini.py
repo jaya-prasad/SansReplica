@@ -38,7 +38,8 @@ for f in files:
 	if x.lower().endswith(('.png', '.jpg', '.jpeg')) == 0:
 		continue
 	hash_value[f] = get_hash(f)
-	print f," ",hash_value[f]
+	#Image and it's hash
+	print f," --> ",hash_value[f]
 
 dr = 0
 
@@ -49,10 +50,11 @@ for f in sorted(hash_value):
 				similar_file_list[f].append(x)
 			else:
 				similar_file_list[x].append(f)
+			#Pair of images and their hammingDistance
 			print f," --> ",x," <",hammingDistance(hash_value[f],hash_value[x]),">"
 
-for f in similar_file_list:
-	print f
+#for f in similar_file_list:
+#	print f
 
 for f in sorted(hash_value):
 	flag = 1
