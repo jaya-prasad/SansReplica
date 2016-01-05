@@ -4,12 +4,13 @@ import shutil
 from collections import defaultdict
 import sys
 
+#Function to get Hamming Distance between two strings
 def hammingDistance(s1, s2):
-    """Return the Hamming distance between equal-length sequences"""
     if len(s1) != len(s2):
     	return 100
     return sum(bool(ord(ch1) - ord(ch2)) for ch1, ch2 in zip(s1, s2))
 
+#Function to get the hash value of an image
 def get_hash(f):
 	img = Image.open(f)
 	img = img.resize((8, 8), Image.ANTIALIAS)

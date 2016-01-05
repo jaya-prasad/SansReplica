@@ -1,2 +1,2 @@
 # SansReplica
-This project is going to be a based on image processing. Given a directory, this application will tell you all the images which are duplicates. This will in managing large image sets where user doesn't want any duplicates.
+This project is going to be a based on image processing. Given a directory, this application will tell you all the images which are duplicates. This will help in managing large image sets where user doesn't want any duplicates.
