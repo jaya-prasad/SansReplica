@@ -42,8 +42,6 @@ for f in files:
 	#Image and it's hash
 	print f," --> ",hash_value[f]
 
-dr = 0
-
 for f in sorted(hash_value):
 	for x in sorted(hash_value):
 		if(hammingDistance(hash_value[f],hash_value[x])<2 and f!=x):
