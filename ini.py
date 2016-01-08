@@ -1,3 +1,11 @@
+'''
+	Author : pakhandi
+
+	The program is aimed on creating a directory of unique images from a given source directory.
+	The program should be able to identify two images as similar even after slight modification to one of them.
+
+'''
+
 from PIL import Image
 import os
 import shutil
