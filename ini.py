@@ -63,6 +63,8 @@ for f in sorted(hash_value):
 #for f in similar_file_list:
 #	print f
 
+unique_files = 0;
+
 for f in sorted(hash_value):
 	flag = 1
 	fn = f.rsplit("/")
@@ -78,3 +80,6 @@ for f in sorted(hash_value):
 		if not os.path.exists(sys.argv[2]):
 			os.makedirs(sys.argv[2])
 		shutil.copyfile(f,sys.argv[2]+fn)
+		unique_files = unique_files + 1
+
+print unique_files," files were found unique"
