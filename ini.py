@@ -32,23 +32,45 @@ def get_hash(f):
 
 	return hexadecimal
 
-
 if len(sys.argv)!=3:
 	print "Error !!! Correct usage : python ini.py <Directory for images> <Directory for uniques>"
 	exit()
+
+if sys.argv[1].endswith('/'):
+	sys.argv[1][:-1]
+
+if sys.argv[2].endswith('/') == 0:
+	sys.argv[2] = sys.argv[2] + "/"
+
+
 
 hash_value = {}
 similar_file_list = defaultdict(list)
 files = [f for f in os.listdir(sys.argv[1])]
 files = [sys.argv[1] + f for f in files]
 
-for f in files:
-	x = f
-	if x.lower().endswith(('.png', '.jpg', '.jpeg')) == 0:
-		continue
-	hash_value[f] = get_hash(f)
-	#Image and it's hash
-	print f," --> ",hash_value[f]
+
+for root, dirs, files in os.walk(sys.argv[1]):
+	#path = root.split('/')
+	#print path,root,dirs
+	#print (len(path) - 1)*'---' , root
+	for file in files:
+		f = root+"/"+file
+		x = f
+		if x.lower().endswith(('.png', '.jpg', '.jpeg')) == 0:
+			continue
+		hash_value[f] = get_hash(f)
+		#Image and it's hash
+		print f," --> ",hash_value[f]
+
+
+# for f in files:
+# 	x = f
+# 	if x.lower().endswith(('.png', '.jpg', '.jpeg')) == 0:
+# 		continue
+# 	hash_value[f] = get_hash(f)
+# 	#Image and it's hash
+# 	print f," --> ",hash_value[f]
 
 for f in sorted(hash_value):
 	for x in sorted(hash_value):
