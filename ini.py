@@ -36,9 +36,11 @@ if len(sys.argv)!=3:
 	print "Error !!! Correct usage : python ini.py <Directory for images> <Directory for uniques>"
 	exit()
 
+#Removing "/" from the end of the source directory
 if sys.argv[1].endswith('/'):
 	sys.argv[1][:-1]
 
+#Adding "/" at the end of the destination directory
 if sys.argv[2].endswith('/') == 0:
 	sys.argv[2] = sys.argv[2] + "/"
 
@@ -47,7 +49,7 @@ similar_file_list = defaultdict(list)
 files = [f for f in os.listdir(sys.argv[1])]
 files = [sys.argv[1] + f for f in files]
 
-
+#Iterating through all the folders recursively
 for root, dirs, files in os.walk(sys.argv[1]):
 	for file in files:
 		f = root+"/"+file
