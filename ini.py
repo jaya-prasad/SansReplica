@@ -18,6 +18,9 @@ def hammingDistance(s1, s2):
     	return 100
     return sum(bool(ord(ch1) - ord(ch2)) for ch1, ch2 in zip(s1, s2))
 
+def is_image_file(f):
+	return f.lower().endswith(('.png', '.jpg', '.jpeg'))
+
 #Function to get the hash value of an image
 def get_hash(f):
 	img = Image.open(f)
@@ -54,7 +57,7 @@ for root, dirs, files in os.walk(sys.argv[1]):
 	for file in files:
 		f = root+"/"+file
 		x = f
-		if x.lower().endswith(('.png', '.jpg', '.jpeg')) == 0:
+		if not is_image_file(x):
 			continue
 		hash_value[f] = get_hash(f)
 		#Image and it's hash
