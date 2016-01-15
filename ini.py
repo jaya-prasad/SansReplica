@@ -41,7 +41,7 @@ if len(sys.argv)!=3:
 
 #Removing "/" from the end of the source directory
 if sys.argv[1].endswith('/'):
-	sys.argv[1][:-1]
+	sys.argv[1] = sys.argv[1][:-1]
 
 #Adding "/" at the end of the destination directory
 if sys.argv[2].endswith('/') == 0:
