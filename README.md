@@ -1,4 +1,4 @@
-# SansReplica
+# SansReplica [UNDER DEVELOPMENT]
 This project is going to be a based on image processing. Given a directory, this application will tell you all the images which are duplicates. This will help in managing large image sets where user doesn't want any duplicates.
 <br />
 <h3>Features</h3>
