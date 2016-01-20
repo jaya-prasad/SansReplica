@@ -18,6 +18,7 @@ def hammingDistance(s1, s2):
     	return 100
     return sum(bool(ord(ch1) - ord(ch2)) for ch1, ch2 in zip(s1, s2))
 
+#Function to check if a file is of supported format or not
 def is_image_file(f):
 	return f.lower().endswith(('.png', '.jpg', '.jpeg'))
 
