@@ -36,6 +36,7 @@ def get_hash(f):
 
 	return hexadecimal
 
+#Included command line arguments
 if len(sys.argv)!=3:
 	print "Error !!! Correct usage : python ini.py <Directory for images> <Directory for uniques>"
 	exit()
