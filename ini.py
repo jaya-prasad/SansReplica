@@ -65,6 +65,7 @@ for root, dirs, files in os.walk(sys.argv[1]):
 		#Image and it's hash
 		print f," --> ",hash_value[f]
 
+#Creating a list of files with similar hash
 for f in sorted(hash_value):
 	for x in sorted(hash_value):
 		if(hammingDistance(hash_value[f],hash_value[x])<2 and f!=x):
