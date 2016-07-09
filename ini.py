@@ -66,7 +66,7 @@ for root, dirs, files in os.walk(sys.argv[1]):
         if not isImageFile(x):
             continue
         hash_value[f] = getSoftHash(f)
-		# Image and it's hash
+        # Image and it's hash
         print f, " --> ", hash_value[f]
 
 # Creating a list of files with similar hash
@@ -77,7 +77,7 @@ for f in sorted(hash_value):
                 similar_file_list[f].append(x)
             else:
                 similar_file_list[x].append(f)
-			# Pair of images and their hammingDistance
+            # Pair of images and their hammingDistance
             print f, " --> ", x, " <", hammingDistance(hash_value[f], hash_value[x]), ">"
 
 unique_files = 0;
