@@ -51,7 +51,7 @@ if sys.argv[1].endswith('/'):
 
 # Adding "/" at the end of the destination directory
 if sys.argv[2].endswith('/') == 0:
-    sys.argv[2] = sys.argv[2] + "/"
+    sys.argv[2] += "/"
 
 hash_value = {}
 similar_file_list = defaultdict(list)
