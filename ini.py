@@ -72,7 +72,7 @@ for root, dirs, files in os.walk(sys.argv[1]):
 # Creating a list of files with similar hash
 for f in sorted(hash_value):
     for x in sorted(hash_value):
-        if (hammingDistance(hash_value[f], hash_value[x]) < 2 and f != x):
+        if hammingDistance(hash_value[f], hash_value[x]) < 2 and f != x:
             if f < x:
                 similar_file_list[f].append(x)
             else:
@@ -80,7 +80,7 @@ for f in sorted(hash_value):
             # Pair of images and their hammingDistance
             print f, " --> ", x, " <", hammingDistance(hash_value[f], hash_value[x]), ">"
 
-unique_files = 0;
+unique_files = 0
 
 for f in sorted(hash_value):
     flag = 1
@@ -97,6 +97,6 @@ for f in sorted(hash_value):
         if not os.path.exists(sys.argv[2]):
             os.makedirs(sys.argv[2])
         shutil.copyfile(f, sys.argv[2] + fn)
-        unique_files = unique_files + 1
+        unique_files += 1
 
 print unique_files, " files were found unique"
